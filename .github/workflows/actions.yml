@@ -16,6 +16,6 @@ jobs:
       - name: print action var
         # 打印这个 actions 中输出的值，一个 actions 不仅可以接受输入，还可以输出
         run: console.log("${{ steps.write.outputs.time }}") 
-        shell: nodejs
+        shell: node
         
      
