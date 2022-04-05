@@ -1,0 +1,19 @@
+# 每个工作流的名字
+name: Shell Commands
+
+on: [push]
+
+jobs:
+  # 每个 job 的名字不可以有空行
+  run-shell-command:
+    # 运行在什么环境
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo-string
+        run: echo "hello world"
+      - name: more script
+        # 执行多个命令可以用管道符，而不是数组
+        run: |
+          node -v
+          npm -v
+        
