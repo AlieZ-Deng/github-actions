@@ -20,6 +20,7 @@ jobs:
   run-wins-command:
     # 运行在什么环境
     runs-on: windows-latest
+    # 假设这个 job 需要依赖 上面的那个 job，类型是数组
     needs:
       - run-shell-command
     steps:
