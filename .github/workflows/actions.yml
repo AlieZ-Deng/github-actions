@@ -15,6 +15,7 @@ jobs:
           who-to-greet: '输入一个具体的变量到 actions 中'
       - name: print action var
         # 打印这个 actions 中输出的值，一个 actions 不仅可以接受输入，还可以输出
-        run: echo "${{ steps.write.outputs.time }}"
+        run: console.log("${{ steps.write.outputs.time }}") 
+        shell: javascript
         
      
