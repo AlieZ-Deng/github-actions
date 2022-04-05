@@ -20,6 +20,8 @@ jobs:
   run-wins-command:
     # 运行在什么环境
     runs-on: windows-latest
+    needs:
+      - run-shell-command
     steps:
       - name: powershell get pwd
         run: Get-Location
