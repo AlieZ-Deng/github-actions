@@ -1,7 +1,8 @@
 # 每个工作流的名字
 name: Shell Commands
 
-on: [push]
+on: 
+  - push
 
 jobs:
   # 每个 job 的名字不可以有空行
@@ -10,10 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo-string
-        run: eccho "hello world"
+        run: echo "hello world"
       - name: more script
         # 执行多个命令可以用管道符，而不是数组
         run: |
           node -v
           npm -v
+  run-wins-command:
+    # 运行在什么环境
+    runs-on: windows-latest
+    steps:
+      - name: powershell get pwd
+        run: Get-Location
+      - name: windows use bash get pwd
+        run: pwd
+        # windows 上默认使用 powershell，而 pwd 是 bash 指令，所以要指定 shell
+        shell: bash
+
         
