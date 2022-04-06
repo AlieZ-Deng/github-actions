@@ -15,7 +15,22 @@ jobs:
           who-to-greet: '输入一个具体的变量到 actions 中'
       - name: print action var
         # 打印这个 actions 中输出的值，一个 actions 不仅可以接受输入，还可以输出
-        run: console.log("${{ steps.write.outputs.time }}") 
-        shell: node
+        run: echo "${{ steps.write.outputs.time }}" 
+  checkout-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout before ls 
+        run: |
+          pwd
+          ls -a
+      - name: checkout branch
+        uses: actions/checkout
+        run: echo "checkout success"
+      - name: checkout after ls 
+        run: |
+          pwd
+          ls -a
+   
+      
         
      
