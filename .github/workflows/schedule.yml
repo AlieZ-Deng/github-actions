@@ -1,0 +1,18 @@
+name: run schedule
+
+# https://crontab.guru/examples.html
+on: 
+  schedule: 
+    # 定期运行 
+    - cron: "0-3 * * * *"
+    - cron: "0/4 * * * *"
+  pull_request: 
+    types: [opened]
+
+jobs: 
+  schedule-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo schedule
+        run: echo "schedule-run"
+  

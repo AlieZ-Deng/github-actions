@@ -1,7 +1,9 @@
 name: run actions
 
 on: 
-  - push
+  push:
+  pull_request:
+      types: [closed,opened,reopened]
 
 # https://github.com/actions/hello-world-javascript-action
 jobs: 
@@ -20,9 +22,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout before ls 
+        # $GITHUB_SHA 内置变量 触发此次工作流的 commit id
+        # $GITHUB_WORKSPACE 内置变量 虚拟环境下的工作目录
+        # $GITHUB_RESPOSITORY 内置变量 当前仓库下名字
         run: |
           pwd
           ls -a
+          echo $GITHUB_SHA 
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_RESPOSITORY
       - name: checkout branch
         uses: actions/checkout@v3
       - name: checkout after ls 
